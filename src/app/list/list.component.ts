@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
     this.todoService.confirm(num)
   }
 
-  getDescription(item : Object): void {
+  getDescription(item: Object): void {
 
   }
 }

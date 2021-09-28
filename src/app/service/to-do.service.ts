@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
-import { LocalStorageService } from './local-storage.service';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from "rxjs";
+import {LocalStorageService} from './local-storage.service';
 import {Todo} from "../interface/todo";
 
 
@@ -18,22 +18,24 @@ export class ToDoService {
     this.todos = LocalStorageService.GetData("list")
     this._todo.next(this.todos)
   }
-  SaveData(){
-    this.LocalStorageService.SetData("list",this.todos)
+
+  SaveData() {
+    this.LocalStorageService.SetData("list", this.todos)
   }
+
   create(item: Todo) {
 
     this.todos === null ? this.todos = [] : this.todos;
     this.todos.length != 0 ? this.nextID = this.todos[this.todos.length - 1].id : this.nextID = 0;
     item.id = ++this.nextID;
-    this.todos = [...this.todos,item];
+    this.todos = [...this.todos, item];
     this._todo.next(this.todos);
     this.SaveData()
   }
 
   remove(id: number) {
-    this.todos.forEach((i,indx)=>{
-      if(i.id === id){
+    this.todos.forEach((i, indx) => {
+      if (i.id === id) {
         this.todos.splice(indx, 1)
       }
     })
@@ -41,12 +43,12 @@ export class ToDoService {
     this._todo.next(this.todos)
   }
 
-  confirm(id : number){
-    this.todos.forEach(i =>{
-      if(i.id === id){
-        if(i.status === true){
+  confirm(id: number) {
+    this.todos.forEach(i => {
+      if (i.id === id) {
+        if (i.status === true) {
           i.status = false
-        }else{
+        } else {
           i.status = true
         }
       }
@@ -54,13 +56,16 @@ export class ToDoService {
       this._todo.next(this.todos)
     })
   }
-  Ready(){
+
+  Ready() {
     this._todo.next(this.todos.filter(i => i.status === true))
   }
-  ShowAll(){
+
+  ShowAll() {
     this._todo.next(this.todos)
   }
-  Wait(){
+
+  Wait() {
     this._todo.next(this.todos.filter(i => i.status === false))
   }
 }

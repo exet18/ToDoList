@@ -14,7 +14,7 @@ export class DescriptionComponent implements OnInit {
 
   id?: number
   todos$?: Observable<Todo[]>;
-  itemDescription : Todo | undefined
+  itemDescription: Todo | undefined
 
   constructor(private route: ActivatedRoute, private todoService: ToDoService) {
     this.todos$ = todoService.todos$

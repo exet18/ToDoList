@@ -5,7 +5,7 @@ import {ToDoComponent} from "./todo/to-do.component";
 
 const routes: Routes = [
   {path: "", component: ToDoComponent},
-  {path: ":id" ,component: DescriptionComponent}
+  {path: ":id", component: DescriptionComponent}
 ];
 
 @NgModule({

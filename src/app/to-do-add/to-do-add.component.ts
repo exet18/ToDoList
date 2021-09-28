@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToDoService } from '../service/to-do.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ToDoService} from '../service/to-do.service';
 
 @Component({
   selector: 'app-to-do-add',
@@ -11,6 +11,7 @@ export class ToDoAddComponent implements OnInit {
 
 
   todoForm!: FormGroup;
+
   constructor(private todoService: ToDoService, private formBuilder: FormBuilder) {
 
     this.todoForm = this.formBuilder.group({
@@ -23,17 +24,21 @@ export class ToDoAddComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onSubmit() {
     this.todoService.create(this.todoForm.value);
     this.todoForm.controls.value.setValue("")
   }
-  Ready(){
-      this.todoService.Ready();
+
+  Ready() {
+    this.todoService.Ready();
   }
-  ShowAll(){
+
+  ShowAll() {
     this.todoService.ShowAll()
   }
-  Wait(){
+
+  Wait() {
     this.todoService.Wait();
   }
 }

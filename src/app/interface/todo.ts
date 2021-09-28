@@ -1,6 +1,6 @@
 export interface Todo {
-  status : boolean
+  status: boolean
   id: any
-  value : string
-  description : string
+  value: string
+  description: string
 }

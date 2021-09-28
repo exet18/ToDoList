@@ -1,7 +1,7 @@
 <div class="container">
   <div class="list" *ngFor="let ID = index , let todo of (todos$ | async)" routerLink="/{{todo.id}}">
     <div class="numbers">
-      <input type="checkbox" (click)="ready(todo.id)" [checked] ="todo.status">
+      <input type="checkbox" (click)="ready(todo.id)" [checked]="todo.status">
       <p [ngClass]="{'complete': todo.status}">{{ ID + 1 }} - {{ todo.value }}</p>
     </div>
     <button (click)="deleteTodo(todo.id)" class="btn btn-danger"><p>X</p></button>

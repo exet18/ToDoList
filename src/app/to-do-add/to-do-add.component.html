@@ -1,9 +1,9 @@
 <div class="ctn">
-    <form [formGroup]="todoForm" (submit)="onSubmit()" class="form">
-        <input class="form-control" type="text" id="value" name="value" formControlName="value" />
-        <button type="submit" class="btn btn-dark">Add Item</button>
-    </form>
-    <button class="btn btn-dark" (click)="ShowAll()">ShowAll</button>
-    <button class="btn btn-dark" (click)="Wait()">Wait</button>
-    <button class="btn btn-dark" (click)="Ready()">Ready</button>
+  <form [formGroup]="todoForm" (submit)="onSubmit()" class="form">
+    <input class="form-control" type="text" id="value" name="value" formControlName="value"/>
+    <button type="submit" class="btn btn-dark">Add Item</button>
+  </form>
+  <button class="btn btn-dark" (click)="ShowAll()">ShowAll</button>
+  <button class="btn btn-dark" (click)="Wait()">Wait</button>
+  <button class="btn btn-dark" (click)="Ready()">Ready</button>
 </div>
