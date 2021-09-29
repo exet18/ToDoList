@@ -1,6 +1,6 @@
 <div class="item" *ngIf="itemDescription">
-  <label for="">Name:</label>
-  <p>{{itemDescription.value}}</p>
-  <label for="">Description:</label>
-  <p>{{itemDescription.description}}</p>
+  <label for="name-text" class="name">Name:</label>
+  <p id="name-text">{{itemDescription.value}}</p>
+  <label for="description-text" class="description">Description:</label>
+  <p id="description-text">{{itemDescription.description}}</p>
 </div>

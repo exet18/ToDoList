@@ -15,57 +15,60 @@ export class ToDoService {
   private nextID = 0
 
   constructor(private LocalStorageService: LocalStorageService) {
-    this.todos = LocalStorageService.GetData("list")
+    this.todos = LocalStorageService.getData("list")
     this._todo.next(this.todos)
   }
 
-  SaveData() {
-    this.LocalStorageService.SetData("list", this.todos)
+  saveToLocalStorage() {
+    this.LocalStorageService.setData("list", this.todos)
   }
 
-  create(item: Todo) {
-
+  addElement(item: Todo) {
     this.todos === null ? this.todos = [] : this.todos;
     this.todos.length != 0 ? this.nextID = this.todos[this.todos.length - 1].id : this.nextID = 0;
     item.id = ++this.nextID;
     this.todos = [...this.todos, item];
     this._todo.next(this.todos);
-    this.SaveData()
+    this.saveToLocalStorage()
   }
 
-  remove(id: number) {
+  removeElement(id: number) {
     this.todos.forEach((i, indx) => {
       if (i.id === id) {
         this.todos.splice(indx, 1)
       }
     })
-    this.SaveData()
+    this.saveToLocalStorage()
     this._todo.next(this.todos)
   }
 
-  confirm(id: number) {
+  markReadyElement(id: number) {
     this.todos.forEach(i => {
       if (i.id === id) {
-        if (i.status === true) {
-          i.status = false
-        } else {
-          i.status = true
-        }
+        i.status = !i.status;
       }
-      this.SaveData()
+      this.saveToLocalStorage()
       this._todo.next(this.todos)
     })
   }
 
-  Ready() {
-    this._todo.next(this.todos.filter(i => i.status === true))
+  showReadyStatus() {
+    this._todo.next(this.todos.filter(i => this.checkReadyStatus(i)))
   }
 
-  ShowAll() {
+  showAllElements() {
     this._todo.next(this.todos)
   }
 
-  Wait() {
-    this._todo.next(this.todos.filter(i => i.status === false))
+  showWaitStatus() {
+    this._todo.next(this.todos.filter(i => this.checkWaitStatus(i)))
+  }
+
+  checkReadyStatus(item: Todo): boolean {
+    return item !== null && item.status
+  }
+
+  checkWaitStatus(item: Todo): boolean {
+    return item !== null && !item.status
   }
 }

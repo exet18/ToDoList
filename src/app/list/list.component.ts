@@ -4,7 +4,7 @@ import {ToDoService} from '../service/to-do.service';
 import {Todo} from "../interface/todo";
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-to-do-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
@@ -19,15 +19,12 @@ export class ListComponent implements OnInit {
     this.todos$ = this.todoService.todos$;
   }
 
-  deleteTodo(todoId: number) {
-    this.todoService.remove(todoId);
+  deleteTodo(id: number) {
+    this.todoService.removeElement(id);
   }
 
-  ready(num: number): void {
-    this.todoService.confirm(num)
+  markReady(id: number): void {
+    this.todoService.markReadyElement(id)
   }
 
-  getDescription(item: Object): void {
-
-  }
 }

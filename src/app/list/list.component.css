@@ -16,10 +16,6 @@ p {
   box-shadow: 0 0 1px 0;
 }
 
-.list:hover {
-  cursor: pointer;
-}
-
 .list button {
   width: 20px;
   height: 20px;
@@ -45,6 +41,10 @@ p {
 
 .numbers p {
   margin-left: 10px;
+  width: 490px;
+}
+.numbers p:hover{
+  cursor: pointer;
 }
 
 .list button p {

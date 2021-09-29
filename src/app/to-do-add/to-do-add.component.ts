@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToDoService} from '../service/to-do.service';
 
 @Component({
-  selector: 'app-to-do-add',
+  selector: 'app-to-do-add-list',
   templateUrl: './to-do-add.component.html',
   styleUrls: ['./to-do-add.component.css']
 })
@@ -26,19 +26,19 @@ export class ToDoAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.todoService.create(this.todoForm.value);
+    this.todoService.addElement(this.todoForm.value);
     this.todoForm.controls.value.setValue("")
   }
 
-  Ready() {
-    this.todoService.Ready();
+  readyItems() {
+    this.todoService.showReadyStatus();
   }
 
-  ShowAll() {
-    this.todoService.ShowAll()
+  allItems() {
+    this.todoService.showAllElements()
   }
 
-  Wait() {
-    this.todoService.Wait();
+  waitItems() {
+    this.todoService.showWaitStatus();
   }
 }

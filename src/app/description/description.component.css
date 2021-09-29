@@ -1,0 +1,9 @@
+.item label:hover{
+  cursor: pointer;
+}
+.name:hover ~ #name-text{
+  text-decoration: underline;
+}
+.description:hover ~ #description-text{
+  text-decoration: underline;
+}
